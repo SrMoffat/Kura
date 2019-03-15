@@ -1,0 +1,7 @@
+{
+    "env": {
+        "MONGO_USER": "kurauser",
+        "MONGO_PASSWORD": "mongodb4fr0",
+        "MONGO_DB": "kura_db"
+    }
+}
