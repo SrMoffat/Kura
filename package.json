@@ -1,0 +1,30 @@
+{
+  "name": "kura",
+  "version": "1.0.0",
+  "description": "Voting platform where users can nominate and vote for others in their voting clusters and see the results",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SrMoffat/Kura.git"
+  },
+  "keywords": [
+    "Voting",
+    "System"
+  ],
+  "author": "4fr0c0d3",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SrMoffat/Kura/issues"
+  },
+  "homepage": "https://github.com/SrMoffat/Kura#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
