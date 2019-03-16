@@ -15,6 +15,43 @@ const app = express();
 // body-parser to parse the request body
 app.use(bodyParser.json());
 
+// getUser helper
+const getUser = userId => {
+    return User.findById({
+        _id: userId
+    })
+    .then(user => {
+        console.log('CLUSTERS', user._doc.createdClusters)
+        return {
+            ...user._doc,
+            createdClusters: getClusters.bind(this, user._doc.createdClusters)
+        }
+    })
+    .catch(error => {
+        throw error;
+    })
+}
+
+// getClusters helper
+const getClusters = clusterIds => {
+    return Cluster.find({
+        _id: {
+            $in: clusterIds
+        }
+    })
+    .then(clusters => {
+        clusters.map(cluster => {
+            return {
+                ...cluster._doc,
+                creator: getUser.bind(this, cluster._doc.creator)
+            }
+        })
+    })
+    .catch(error => {
+        throw error;
+    })
+}
+
 // configure graphQL
 app.use('/graphql', graphqlHttp({
     schema: buildSchema(
@@ -25,6 +62,7 @@ app.use('/graphql', graphqlHttp({
             clusterHead: String!
             clusterPositions: [String!]!
             clusterMembers: [String!]!
+            creator: User!
         }
 
         type User {
@@ -33,6 +71,7 @@ app.use('/graphql', graphqlHttp({
             lastName: String!
             email: String!
             password: String
+            createdClusters: [Cluster!]
         }
 
         input ClusterInput {
@@ -71,7 +110,10 @@ app.use('/graphql', graphqlHttp({
             return Cluster.find()
                 .then(clusters => {
                     return clusters.map(cluster => {
-                        return { ...cluster._doc }
+                        return { 
+                            ...cluster._doc,
+                            creator: getUser.bind(this, cluster._doc.creator)
+                        }
                     })
                 })
                 .catch(error => {
@@ -85,13 +127,26 @@ app.use('/graphql', graphqlHttp({
                 clusterName,
                 clusterHead,
                 clusterPositions,
-                clusterMembers                
+                clusterMembers,
+                creator: '5c8cc62f10546b3476eda07e'                
             });
+
+            let createdCluster;
 
             return cluster.save()
                 .then(result => {
-                    console.log('DATA', result);
-                    return { ...cluster._doc };
+                    createdCluster =  { ...cluster._doc };
+                    return User.findById('5c8cc62f10546b3476eda07e')
+                })
+                .then(user => {
+                    if (!user) {
+                        throw new Error('User not found!');
+                    }
+                    user.createdClusters.push(cluster);
+                    return user.save()
+                })
+                .then(result => {
+                    return createdCluster;
                 })
                 .catch(error => {
                     console.log('ERROR', error);
