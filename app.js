@@ -3,9 +3,11 @@ const bodyParser = require('body-parser');
 const graphqlHttp = require('express-graphql');
 const { buildSchema } = require('graphql');
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
-// bring cluster model
+// bring models
 const Cluster = require('./models/cluster');
+const User = require('./models/user');
 
 // instance of the app
 const app = express();
@@ -25,21 +27,36 @@ app.use('/graphql', graphqlHttp({
             clusterMembers: [String!]!
         }
 
+        type User {
+            _id: ID!
+            firstName: String!
+            lastName: String!
+            email: String!
+            password: String
+        }
+
         input ClusterInput {
             clusterName: String!
             clusterHead: String!
             clusterPositions: [String!]!
             clusterMembers: [String!]!
-
         }
+
+        input UserInput {
+            firstName: String!
+            lastName: String!
+            email: String!
+            password: String!
+        }
+
         type RootQuery {
-            clusters: [Cluster!]!            
+            clusters: [Cluster!]!
+            users: [User!]!           
         }
 
         type RootMutation {
-            createCluster(
-                clusterInput: ClusterInput                
-            ) : Cluster
+            createCluster(clusterInput: ClusterInput) : Cluster
+            createUser(userInput: UserInput ) : User
         }
 
         schema {
@@ -51,7 +68,6 @@ app.use('/graphql', graphqlHttp({
     // Resolvers/Controllers
     rootValue: {
         clusters: () => {
-            console.log('HERE');
             return Cluster.find()
                 .then(clusters => {
                     return clusters.map(cluster => {
@@ -72,8 +88,7 @@ app.use('/graphql', graphqlHttp({
                 clusterMembers                
             });
 
-            return cluster
-                .save()
+            return cluster.save()
                 .then(result => {
                     console.log('DATA', result);
                     return { ...cluster._doc };
@@ -82,6 +97,35 @@ app.use('/graphql', graphqlHttp({
                     console.log('ERROR', error);
                     throw error;
                 })
+        },
+        createUser: (args) => {
+            const { userInput: { firstName, lastName, email, password } } = args;
+
+            return User.findOne({
+                email
+            })
+            .then(user => {
+                if (user) {
+                    throw new Error('User already exists!');
+                }
+                return bcrypt.hash(password, 12);
+            })
+            .then(hashedPassword => {
+                    const user = new User({
+                        firstName,
+                        lastName,
+                        email,
+                        password: hashedPassword
+                    });
+                    return user.save();
+                })
+            .then(result => {
+                return {...result._doc, password: null };
+            })
+            .catch(error => {
+                console.log('Something went wrong', error);
+                throw error;
+            })
         }
     },
     graphiql: true

@@ -19,6 +19,10 @@ const clusterSchema = new Schema({
     clusterMembers: {
         type: [String],
         required: true
+    },
+    creator: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }
 });
 
