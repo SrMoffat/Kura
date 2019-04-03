@@ -4,3 +4,16 @@ type Link {
     description: String!
     url: String!    
 }
+
+type User {
+    id: ID! @unique
+    name: String!
+    email: String! @unique
+    password: String!
+    links: [Link!]!
+}
+
+type AuthPayload {
+    token: String
+    user: User
+}

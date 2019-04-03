@@ -7,6 +7,14 @@ var models = [
   {
     name: "Link",
     embedded: false
+  },
+  {
+    name: "User",
+    embedded: false
+  },
+  {
+    name: "AuthPayload",
+    embedded: false
   }
 ];
 exports.Prisma = prisma_lib_1.makePrismaClientClass({

@@ -1,5 +1,3 @@
-
-
 const info = () => '4fr0c0d3 is 0n';
 
 const feed = (parent, args, context, info) => {
