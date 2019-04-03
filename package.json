@@ -24,7 +24,9 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "graphql-yoga": "^1.17.4",
-    "mongoose": "^5.4.20"
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.4.20",
+    "prisma-client-lib": "^1.29.2"
   },
   "devDependencies": {
     "nodemon": "^1.18.10"
