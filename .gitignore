@@ -4,6 +4,8 @@ nodemon.json
 yarn.lock
 .vscode
 .vscode/
+generated/
+generated
 # Logs
 logs
 *.log
