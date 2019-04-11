@@ -2,7 +2,12 @@ module.exports =
     `
     type Query {
         info: String!
-        feed: [Link!]!
+        feed(
+            filter: String
+            skip: Int
+            first: Int
+            orderBy: LinkOrderBy
+        ): Feed!
     }
 
     type Mutation {
@@ -19,13 +24,9 @@ module.exports =
             email: String!
             password: String!
         ) : AuthPayload
-    }
-
-    type Link {
-        id: ID!
-        description: String!
-        url: String!
-        postedBy: User
+        vote(
+            linkId: ID!
+        ) : Vote
     }
 
     type User {
@@ -39,5 +40,38 @@ module.exports =
     type AuthPayload {
         token: String
         user: User
+    }
+
+    type Link {
+        id: ID!
+        description: String!
+        url: String!
+        postedBy: User
+        votes: [Vote!]!
+    }
+
+    type Subscription {
+        newLink: Link
+        newVote: Vote
+    }
+
+    type Vote {
+        id: ID!
+        link: Link!
+        voter: User!
+    }
+
+    type Feed {
+        links: [Link!]!
+        count: Int!
+    }
+
+    enum LinkOrderBy {
+        description_ASC
+        description_DESC
+        url_ASC
+        url_DESC
+        createdAt_ASC
+        createdAt_DESC
     }
     `

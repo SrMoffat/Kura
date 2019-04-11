@@ -6,4 +6,4 @@ hooks:
   post-deploy:
     - prisma generate
 
-endpoint: https://eu1.prisma.sh/srmoffat/server/dev
+endpoint: https://eu1.prisma.sh/srmoffat/kura/dev

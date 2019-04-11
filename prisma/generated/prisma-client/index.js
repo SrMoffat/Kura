@@ -13,6 +13,10 @@ var models = [
     embedded: false
   },
   {
+    name: "Vote",
+    embedded: false
+  },
+  {
     name: "AuthPayload",
     embedded: false
   }
@@ -20,6 +24,6 @@ var models = [
 exports.Prisma = prisma_lib_1.makePrismaClientClass({
   typeDefs,
   models,
-  endpoint: `https://eu1.prisma.sh/srmoffat/server/dev`
+  endpoint: `https://eu1.prisma.sh/srmoffat/kura/dev`
 });
 exports.prisma = new exports.Prisma();
