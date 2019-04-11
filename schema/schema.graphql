@@ -29,8 +29,14 @@ module.exports =
         ) : Vote
     }
 
+    type Subscription {
+        newLink: Link
+        newVote: Vote
+    }
+
     type User {
         id: ID!
+        user_id: String!
         name: String!
         email: String!
         password: String!
@@ -50,9 +56,13 @@ module.exports =
         votes: [Vote!]!
     }
 
-    type Subscription {
-        newLink: Link
-        newVote: Vote
+    enum LinkOrderBy {
+        description_ASC
+        description_DESC
+        url_ASC
+        url_DESC
+        createdAt_ASC
+        createdAt_DESC
     }
 
     type Vote {
@@ -64,14 +74,5 @@ module.exports =
     type Feed {
         links: [Link!]!
         count: Int!
-    }
-
-    enum LinkOrderBy {
-        description_ASC
-        description_DESC
-        url_ASC
-        url_DESC
-        createdAt_ASC
-        createdAt_DESC
     }
     `

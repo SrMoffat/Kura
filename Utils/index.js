@@ -1,21 +1,9 @@
-const jwt = require('jsonwebtoken');
-const APP_SECRET = process.env.SECRET_KEY;
-
-function getUserId (context) {
-    const Authorization = context.request.get('Authorization');
-
-    if (Authorization) {
-        const token = Authorization.replace('Bearer ', '');
-
-        const { userId } = jwt.verify(token, APP_SECRET);
-        
-        return userId;
-    }
-
-    throw new Error('Unauthorized User!');
-}
+const { APP_SECRET, getUserId, AuthError } = require('./auth');
+const { userPayload } = require('./userPayloadValidator');
 
 module.exports = {
     APP_SECRET,
-    getUserId
+    getUserId,
+    AuthError,
+    userPayload
 }

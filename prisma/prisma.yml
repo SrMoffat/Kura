@@ -4,6 +4,7 @@ generate:
     output: ./generated/prisma-client
 hooks:
   post-deploy:
+    - echo "👽 Prisma Deployed 👽 "
     - prisma generate
 
 endpoint: https://eu1.prisma.sh/srmoffat/kura/dev
