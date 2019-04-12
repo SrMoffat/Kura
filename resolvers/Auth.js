@@ -1,13 +1,11 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const uuid4 = require('uuid/v4');
-const { userPayload } = require('../Utils');
+const { userPayload, checkUserPayload } = require('../Utils');
 
 const signUp = async (parent, args, context, info) => {
 
-    await userPayload.validate(args).catch((error) => {
-        throw new Error(error.errors);
-    });
+    await checkUserPayload(userPayload, args);
 
     const { password, email } = args;
 
