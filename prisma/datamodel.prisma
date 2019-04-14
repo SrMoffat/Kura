@@ -3,7 +3,8 @@ type Link {
     createdAt: DateTime!
     description: String!
     url: String!
-    postedBy: User    
+    postedBy: User
+    votes: [Vote!]!
 }
 
 type User {
@@ -13,6 +14,7 @@ type User {
     email: String! @unique
     password: String!
     links: [Link!]!
+    clusters: [Cluster!]!
 }
 
 type Vote {
@@ -24,4 +26,10 @@ type Vote {
 type AuthPayload {
     token: String
     user: User
+}
+
+type Cluster {
+    id: ID! @unique
+    clusterName: String! @unique
+    clusterHead: User!
 }

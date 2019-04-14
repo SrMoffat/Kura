@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const uuid4 = require('uuid/v4');
-const { userPayload, checkUserPayload } = require('../Utils');
+const { userPayload, checkUserPayload } = require('../../Utils');
 
 const signUp = async (parent, args, context, info) => {
 

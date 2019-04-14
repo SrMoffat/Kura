@@ -8,6 +8,7 @@ module.exports =
             first: Int
             orderBy: LinkOrderBy
         ): Feed!
+        currentUser: User
     }
 
     type Mutation {
@@ -27,6 +28,9 @@ module.exports =
         vote(
             linkId: ID!
         ) : Vote
+        createCluster(
+            clusterName: String!
+        ) : Cluster!
     }
 
     type Subscription {
@@ -41,6 +45,7 @@ module.exports =
         email: String!
         password: String!
         links: [Link!]!
+        clusters: [Cluster!]!
     }
 
     type AuthPayload {
@@ -74,5 +79,11 @@ module.exports =
     type Feed {
         links: [Link!]!
         count: Int!
+    }
+
+    type Cluster {
+        id: ID!
+        clusterName: String!
+        clusterHead: User!
     }
     `

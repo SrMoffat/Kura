@@ -1,10 +1,12 @@
-const Query = require('./Query');
-const Mutation = require('./Mutation');
-const Link = require('./Link');
-const User = require('./User');
-const Subscription = require('./Subscription');
-const Vote = require('./Vote');
-
+const Query = require('../resolvers/queries');
+const Mutation = require('../resolvers/mutations');
+const Subscription = require('../resolvers/subscriptions');
+const {
+    User,
+    Link,
+    Vote,
+    Cluster
+} = require('../resolvers/fieldResolvers');
 
 module.exports = {
     Query,
@@ -12,5 +14,6 @@ module.exports = {
     Subscription,
     User,
     Link,
-    Vote,    
+    Vote,
+    Cluster  
 }

@@ -16,7 +16,7 @@ const app = new GraphQLServer({
 });
 
 app.start(() => {
-    console.log('👽 == Server is listening to requests == 👽 ');
+    console.log('👽 == Server is listening for requests == 👽 ');
 });
 
 

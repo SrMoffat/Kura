@@ -1,5 +1,3 @@
-const info = () => '4fr0c0d3 is 0n';
-
 const feed = async (parent, args, context, info) => {
     const { filter, skip, first, orderBy } = args;
 
@@ -30,6 +28,5 @@ const feed = async (parent, args, context, info) => {
 }
 
 module.exports = {
-    info,
     feed
 }

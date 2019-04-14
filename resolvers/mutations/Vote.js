@@ -1,21 +1,4 @@
-const { signUp, login } = require('./Auth');
-const { getUserId } = require('../Utils');
-
-const post = async (parent, args, context, info) => {
-    const userId = getUserId(context);
-
-    const { url, description } = args;
-
-    return context.prisma.createLink({
-        url,
-        description,
-        postedBy: {
-            connect: {
-                id: userId
-            }
-        }
-    });
-}
+const { getUserId } = require('../../Utils');
 
 const vote = async (parent, args, context, info) => {
     const userId = getUserId(context);
@@ -23,7 +6,7 @@ const vote = async (parent, args, context, info) => {
     const { linkId } = args;
 
     const linkExists = await context.prisma.$exists.vote({
-        voter: { id: userId },
+        voter: { user_id: userId },
         link: { id: linkId }
     });
 
@@ -34,7 +17,7 @@ const vote = async (parent, args, context, info) => {
     return context.prisma.createVote({
         voter: {
             connect: {
-                id: userId
+                user_id: userId
             }
         },
         link: {
@@ -46,8 +29,5 @@ const vote = async (parent, args, context, info) => {
 }
 
 module.exports = {
-    signUp,
-    login,
-    post,
     vote
 }
