@@ -2,35 +2,41 @@ module.exports =
     `
     type Query {
         info: String!
+
         feed(
             filter: String
             skip: Int
             first: Int
             orderBy: LinkOrderBy
         ): Feed!
+
         currentUser: User
     }
 
     type Mutation {
-        post(
-            url: String!
-            description: String!
-            ): Link!
         signUp(
             name: String!
             email: String!
             password: String!
         ) : AuthPayload
+
         login(
             email: String!
             password: String!
         ) : AuthPayload
-        vote(
-            linkId: ID!
-        ) : Vote
+
         createCluster(
             clusterName: String!
         ) : Cluster!
+
+        post(
+            url: String!
+            description: String!
+        ): Link!
+
+        vote(
+            linkId: ID!
+        ) : Vote
     }
 
     type Subscription {
