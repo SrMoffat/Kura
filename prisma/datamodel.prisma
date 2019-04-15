@@ -12,7 +12,7 @@ type User {
     user_id: String! @unique
     name: String!
     email: String! @unique
-    password: String!
+    password: String
     links: [Link!]!
     clusters: [Cluster!]!
 }
@@ -23,13 +23,23 @@ type Vote {
     voter: User!
 }
 
-type AuthPayload {
-    token: String
-    user: User
+type Position {
+    id: ID! @unique
+    positionName: String!
+    status: Boolean!
+    nominees: [User!]!
+
 }
 
 type Cluster {
     id: ID! @unique
     clusterName: String! @unique
     clusterHead: User!
+    positions: [Position!]!
+}
+
+type ClusterMember {
+    id: ID! @unique
+    cluster: Cluster!
+    member: User!
 }

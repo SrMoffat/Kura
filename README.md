@@ -34,13 +34,18 @@ This is a simple platform where users can signup, login, nominate a user, vote f
 
 ## 2. Clusters
 - [ ] Create Cluster
+    - [X] Add Cluster type
+    - [X] Add resolver for the Cluster type
+    - [ ] Add query for the Cluster type
     - [X] Provided the clusterName create a cluster
     - [X] Assign the user creating the cluster as clusterHead
+    - [X] Add provisions for cluster positions
     
 - [ ] Add Cluster Positions
     - [ ] Add positions to the cluster
 
 
-3. Positions
+## 3. Positions
+- [ ]
 4. Nominations
 5. Votes

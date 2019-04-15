@@ -5,6 +5,14 @@ const clusterHead = (parent, args, context, info) => {
     }).clusterHead();
 }
 
+const positions = (parent, args, context, info) => {
+    const { id } = args;
+    return context.prisma.cluster({
+        id
+    }).positions();
+}
+
 module.exports = {
-    clusterHead
+    clusterHead,
+    positions
 }
