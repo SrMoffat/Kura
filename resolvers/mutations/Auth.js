@@ -58,7 +58,7 @@ const login = async (parent, args, context, info) => {
     }
 
     const token = jwt.sign({
-        userId: user.id
+        userId: user.user_id
         },
         process.env.SECRET_KEY
     );

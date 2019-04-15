@@ -29,6 +29,10 @@ module.exports =
             clusterName: String!
         ) : Cluster!
 
+        createPosition(
+            positionName: String!
+        ) : Position!
+
         post(
             url: String!
             description: String!
@@ -97,7 +101,7 @@ module.exports =
     type Position {
         id: ID!
         positionName: String!
-        status: Boolean!
+        open: Boolean!
         nominees: [User!]!
     }
 

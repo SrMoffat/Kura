@@ -1,5 +1,5 @@
-const newLink = require('./Link');
-const newVote = require('./Vote');
+const { newLink } = require('./Link');
+const { newVote } = require('./Vote');
 
 module.exports = {
     newLink,

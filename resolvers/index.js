@@ -5,7 +5,8 @@ const {
     User,
     Link,
     Vote,
-    Cluster
+    Cluster,
+    Position
 } = require('../resolvers/fieldResolvers');
 
 module.exports = {
@@ -15,5 +16,6 @@ module.exports = {
     User,
     Link,
     Vote,
-    Cluster  
+    Cluster,
+    Position
 }

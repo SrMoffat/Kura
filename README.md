@@ -1,7 +1,17 @@
 # Kura 
 
 ## Description
-This is a simple platform where users can signup, login, nominate a user, vote for them, and see the results for a specific position. 
+This is a simple platform where users can signup, login, nominate a user, vote for them, and see the results for a specific position.
+
+## Dependencies
+- [X] Install [GraphQL-Yoga](https://www.npmjs.com/package/graphql-yoga) (Server)
+- [X] Install [Body-Parser](https://www.npmjs.com/package/body-parser)(Request Parser)
+- [X] Install [JSON Web Token](https://www.npmjs.com/package/jsonwebtoken) (JWT)
+- [X] Install [Bcrypt](https://www.npmjs.com/package/bcrypt) (Hashing)
+- [X] Install [Prisma-Client]()(Web Client)
+- [X] Install [UUID](https://www.npmjs.com/package/uuid)(Random String Generator)
+- [X] Install [YUP](https://www.npmjs.com/package/yup)(Validations)
+- [X] Install [Nodemon](https://www.npmjs.com/package/nodemon)(Hot Reaload)
 
 ## TODOs
 
@@ -9,7 +19,7 @@ This is a simple platform where users can signup, login, nominate a user, vote f
 - [X] SignUp 
     - [X] Add User type
     - [X] Add AuthPayload type
-    - [X] Add resolver for the User type
+    - [X] Add mutation for the User type
     - [X] Add query for the User type
     - [X] Basic Authentication with email and password
     - [X] Validations for user registration input
