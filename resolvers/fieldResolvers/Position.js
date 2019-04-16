@@ -6,6 +6,6 @@ const nominees = (parent, args, context, info) => {
     }).nominees();
 }
 
-module.exports = {
+export default {
     nominees
 }

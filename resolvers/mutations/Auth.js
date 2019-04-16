@@ -1,7 +1,9 @@
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const uuid4 = require('uuid/v4');
-const { userPayload, checkUserPayload } = require('../../Utils');
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import uuid4 from 'uuid/v4';
+import utils from '../../Utils';
+
+const { userPayload, checkUserPayload } = utils;
 
 const signUp = async (parent, args, context, info) => {
 
@@ -69,7 +71,7 @@ const login = async (parent, args, context, info) => {
     }
 
 }
-module.exports = {
+export default {
     signUp,
     login
 }

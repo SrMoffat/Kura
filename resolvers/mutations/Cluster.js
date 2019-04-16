@@ -1,4 +1,6 @@
-const { getUserId } = require('../../Utils');
+import utils from '../../Utils';
+
+const { getUserId } = utils;
 
 const createCluster = async (parent, args, context, info) => {
 
@@ -16,6 +18,17 @@ const createCluster = async (parent, args, context, info) => {
     });
 }
 
-module.exports = {
-    createCluster
+const addMember = async (parent, args, context, info) => {
+    const userId = getUserId(context);
+
+    const { clusterId, memberId } = args;
+
+    
+
+    return context.prisma.createClusterMember({
+        clusterId,
+        memberId
+    });
+
 }
+export default createCluster;

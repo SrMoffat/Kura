@@ -1,8 +1,12 @@
-const { info } = require('./Info');
-const { feed }= require('./Feed');
-const { currentUser } = require('./User');
+import Info from './Info';
+import Feed from './Feed';
+import User from './User';
 
-module.exports = {
+const { info } = Info
+const { feed }= Feed
+const { currentUser } = User;
+
+export default {
     info,
     feed,
     currentUser

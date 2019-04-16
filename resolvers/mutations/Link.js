@@ -1,4 +1,5 @@
-const { getUserId } = require('../../Utils');
+import utils from '../../Utils';
+const { getUserId } = utils
 
 const post = async (parent, args, context, info) => {
     const userId = getUserId(context);
@@ -16,6 +17,6 @@ const post = async (parent, args, context, info) => {
     });
 }
 
-module.exports = {
+export default {
     post
 }

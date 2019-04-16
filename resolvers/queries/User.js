@@ -1,4 +1,6 @@
-const { getUserId } = require('../../Utils');
+import utils from '../../Utils';
+
+const { getUserId } = utils;
 
 const currentUser = (parent, args, context, info) => {
 
@@ -12,6 +14,6 @@ const currentUser = (parent, args, context, info) => {
     );
 }
 
-module.exports = {
+export default {
     currentUser
 }

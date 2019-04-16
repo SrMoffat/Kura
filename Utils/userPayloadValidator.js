@@ -1,8 +1,4 @@
-const yup = require('yup');
-
-/*
-^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$
-*/
+import * as yup from 'yup';
 
 const passwordLiteral = /[^password]/;
 const passwordExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#\$%\^\&*\\-]{8,}$/
@@ -34,8 +30,7 @@ const checkUserPayload = async (schema, payload) => {
     }
 }
 
-module.exports = {
+export default {
     userPayload,
-    checkUserPayload    
+    checkUserPayload
 }
-

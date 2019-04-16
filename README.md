@@ -19,8 +19,9 @@ This is a simple platform where users can signup, login, nominate a user, vote f
 - [X] SignUp 
     - [X] Add User type
     - [X] Add AuthPayload type
-    - [X] Add mutation for the User type
-    - [X] Add query for the User type
+    - [X] Add mutation resolver for the User type
+    - [X] Add query resolver for the User type
+    - [X] Add resolvers for the fields on User type
     - [X] Basic Authentication with email and password
     - [X] Validations for user registration input
     - [X] Ensure email is unique
@@ -46,10 +47,12 @@ This is a simple platform where users can signup, login, nominate a user, vote f
 - [ ] Create Cluster
     - [X] Add Cluster type
     - [X] Add resolver for the Cluster type
+    - [X] Add resolvers for the fields on the Cluster type
     - [ ] Add query for the Cluster type
     - [X] Provided the clusterName create a cluster
     - [X] Assign the user creating the cluster as clusterHead
     - [X] Add provisions for cluster positions
+    - [ ] Add members to a cluster
     
 - [ ] Add Cluster Positions
     - [ ] Add positions to the cluster

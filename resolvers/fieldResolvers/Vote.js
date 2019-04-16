@@ -12,7 +12,7 @@ const voter = (parent, args, context, info) => {
     }).voter();
 }
 
-module.exports = {
+export default {
     link,
     voter
 }

@@ -15,7 +15,7 @@ const positions = (parent, args, context, info) => {
     }).positions();
 }
 
-module.exports = {
+export default {
     clusterHead,
     positions
 }

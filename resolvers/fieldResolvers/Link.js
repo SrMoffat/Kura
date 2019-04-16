@@ -12,7 +12,7 @@ const votes = (parent, args, context, info) => {
     }).votes();
 }
 
-module.exports = {
+export default {
     postedBy,
     votes
 }

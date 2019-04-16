@@ -1,15 +1,17 @@
-const Query = require('../resolvers/queries');
-const Mutation = require('../resolvers/mutations');
-const Subscription = require('../resolvers/subscriptions');
+import Query from '../resolvers/queries';
+import Mutation from '../resolvers/mutations';
+import Subscription from '../resolvers/subscriptions';
+import fieldResolvers from '../resolvers/fieldResolvers';
+
 const {
     User,
     Link,
     Vote,
     Cluster,
     Position
-} = require('../resolvers/fieldResolvers');
+} = fieldResolvers;
 
-module.exports = {
+const resolvers = {
     Query,
     Mutation,
     Subscription,
@@ -19,3 +21,5 @@ module.exports = {
     Cluster,
     Position
 }
+
+export default resolvers;

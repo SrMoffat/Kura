@@ -12,7 +12,7 @@ const clusters = (parent, args, context) => {
     }).clusters();
 }
 
-module.exports = {
+export default {
     links,
     clusters
 }

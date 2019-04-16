@@ -1,15 +1,21 @@
-const { signUp, login } = require('./Auth');
-const { post } = require('./Link');
-const { vote } = require('./Vote');
-const { createCluster } = require('./Cluster');
-const { createPosition } = require('./Position');
+import Auth from './Auth';
+import Link from './Link';
+import Vote from './Vote';
+import Cluster from './Cluster';
+import Position from './Position';
+
+const { signUp, login } = Auth;
+const { post } = Link;
+const { vote } = Vote;
+const { createCluster } = Cluster;
+const { createPosition } = Position;
 
 
-module.exports = {
+export default {
     signUp,
     login,
     post,
     vote,
-    createCluster,
+    createCluster: Cluster,
     createPosition
 }

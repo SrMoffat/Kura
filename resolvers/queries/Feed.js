@@ -27,6 +27,6 @@ const feed = async (parent, args, context, info) => {
     }
 }
 
-module.exports = {
+export default {
     feed
 }

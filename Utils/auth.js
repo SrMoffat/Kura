@@ -1,4 +1,5 @@
-const jwt = require('jsonwebtoken');
+import * as jwt from 'jsonwebtoken';
+
 const APP_SECRET = process.env.SECRET_KEY;
 
 const getUserId = (context) => {
@@ -21,7 +22,7 @@ class AuthError extends Error {
     }
 }
 
-module.exports = {
+export default {
     APP_SECRET,
     getUserId,
     AuthError

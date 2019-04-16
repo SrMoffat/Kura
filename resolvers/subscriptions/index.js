@@ -1,7 +1,11 @@
-const { newLink } = require('./Link');
-const { newVote } = require('./Vote');
+import Link from './Link';
+import Vote from './Vote';
 
-module.exports = {
+
+const { newLink } = Link;
+const { newVote } = Vote;
+
+export default {
     newLink,
     newVote
 }

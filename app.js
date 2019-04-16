@@ -1,7 +1,8 @@
-const { GraphQLServer } = require('graphql-yoga');
-const { prisma } = require('./prisma/generated/prisma-client');
-const typeDefs = require('./schema/schema.graphql');
-const resolvers = require('./resolvers');
+import { GraphQLServer } from 'graphql-yoga';
+import { prisma } from './prisma/generated/prisma-client';
+import typeDefs from './schema/schema.graphql';
+import resolvers from './resolvers';
+
 
 // instance of the app
 const app = new GraphQLServer({
@@ -18,5 +19,6 @@ const app = new GraphQLServer({
 app.start(() => {
     console.log('👽 == Server is listening for requests == 👽 ');
 });
+
 
 

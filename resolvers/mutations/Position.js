@@ -1,4 +1,5 @@
-const { getUserId } = require('../../Utils');
+import utils from '../../Utils';
+const { getUserId } = utils
 
 const createPosition = (parent, args, context, info) => {
     getUserId(context);
@@ -11,6 +12,6 @@ const createPosition = (parent, args, context, info) => {
 
 }
 
-module.exports = {
+export default {
     createPosition
 }

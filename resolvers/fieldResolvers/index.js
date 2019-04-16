@@ -1,11 +1,10 @@
-const User = require('./User');
-const Link = require('./Link');
-const Vote = require('./Vote');
-const Cluster = require('./Cluster');
-const Position = require('./Position');
+import User from './User';
+import Link from './Link';
+import Vote from './Vote';
+import Cluster from './Cluster';
+import Position from './Position';
 
-
-module.exports = {
+export default {
     Link,
     User,
     Vote,

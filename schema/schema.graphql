@@ -33,6 +33,11 @@ module.exports =
             positionName: String!
         ) : Position!
 
+        addMember(
+            clusterId: ID!
+            memberId: ID!
+        ) : ClusterMember!
+
         post(
             url: String!
             description: String!

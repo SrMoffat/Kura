@@ -11,6 +11,6 @@ const newVote = {
     }
 }
 
-module.exports = {
+export default {
     newVote
 }

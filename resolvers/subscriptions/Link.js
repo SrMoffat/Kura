@@ -11,6 +11,6 @@ const newLink = {
     }
 }
 
-module.exports = {
+export default {
     newLink
 }

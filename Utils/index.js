@@ -1,7 +1,10 @@
-const { APP_SECRET, getUserId, AuthError } = require('./auth');
-const { userPayload, checkUserPayload } = require('./userPayloadValidator');
+import auth from './auth';
+import payload from './userPayloadValidator';
 
-module.exports = {
+const  { userPayload, checkUserPayload }= payload;
+const { APP_SECRET, getUserId, AuthError } = auth;
+
+export default {
     APP_SECRET,
     getUserId,
     AuthError,
