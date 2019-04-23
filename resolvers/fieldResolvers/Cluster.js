@@ -8,8 +8,6 @@ const clusterHead = (parent, args, context, info) => {
 const positions = (parent, args, context, info) => {
     const { id } = parent;
 
-    console.log({id});
-
     return context.prisma.cluster({
         id
     }).positions();

@@ -51,7 +51,8 @@ This is a simple platform where users can signup, login, nominate a user, vote f
     - [ ] Add query for the Cluster type
     - [X] Provided the clusterName create a cluster
     - [X] Assign the user creating the cluster as clusterHead
-    - [X] Add provisions for cluster positions
+    - [] Add a new clusterHead to a cluster (there should only be one)
+    - [] Add provisions for cluster positions
     - [ ] Add members to a cluster
     
 - [ ] Add Cluster Positions

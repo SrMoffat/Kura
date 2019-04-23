@@ -1,45 +1,50 @@
+type User {
+    id: ID! @id
+    user_id: String! @unique
+    name: String!
+    email: String! @unique
+    password: String!
+    links: [Link!]!
+    clusters: [Cluster!]! @relation(name: "ClusterMember")
+    updatedAt: DateTime! @updatedAt
+    createdAt: DateTime! @createdAt
+}
+
 type Link {    
-    id: ID! @unique
-    createdAt: DateTime!
+    id: ID! @id
     description: String!
     url: String!
     postedBy: User
     votes: [Vote!]!
-}
-
-type User {
-    id: ID! @unique
-    user_id: String! @unique
-    name: String!
-    email: String! @unique
-    password: String
-    links: [Link!]!
-    clusters: [Cluster!]!
+    updatedAt: DateTime! @updatedAt
+    createdAt: DateTime! @createdAt
 }
 
 type Vote {
-    id: ID! @unique
+    id: ID! @id
     link: Link!
     voter: User!
+    updatedAt: DateTime! @updatedAt
+    createdAt: DateTime! @createdAt
 }
 
 type Position {
-    id: ID! @unique
+    id: ID! @id
     positionName: String!
-    open: Boolean! @default(value: "true")
-    nominees: [User!]!
+    cluster: Cluster!
+    open: Boolean! @default(value: true)
+    nominees: [User!]
+    updatedAt: DateTime! @updatedAt
+    createdAt: DateTime! @createdAt
 
 }
 
 type Cluster {
-    id: ID! @unique
+    id: ID! @id
     clusterName: String! @unique
-    clusterHead: User!
+    clusterHead: User! @relation(name: "ClusterLeader" link: TABLE)
     positions: [Position!]!
-}
-
-type ClusterMember {
-    id: ID! @unique
-    cluster: Cluster!
-    member: User!
+    members: [User!]! @relation(name: "ClusterMember")
+    updatedAt: DateTime! @updatedAt
+    createdAt: DateTime! @createdAt
 }

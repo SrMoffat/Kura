@@ -1,10 +1,12 @@
 import utils from '../../Utils';
-const { getUserId } = utils
+const { getUserId, throwIfNotFound } = utils
 
 const vote = async (parent, args, context, info) => {
     const userId = getUserId(context);
 
     const { linkId } = args;
+
+    await throwIfNotFound(context, 'link', linkId);
 
     const linkExists = await context.prisma.$exists.vote({
         voter: { user_id: userId },

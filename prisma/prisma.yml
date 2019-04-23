@@ -7,4 +7,4 @@ hooks:
     - echo "👽 Prisma Deployed 👽 "
     - prisma generate
 
-endpoint: https://eu1.prisma.sh/srmoffat/kura/dev
+endpoint: https://eu1.prisma.sh/srmoffat/kura/development

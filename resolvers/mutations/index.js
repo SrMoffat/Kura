@@ -7,7 +7,7 @@ import Position from './Position';
 const { signUp, login } = Auth;
 const { post } = Link;
 const { vote } = Vote;
-const { createCluster } = Cluster;
+const { createCluster, addMember } = Cluster;
 const { createPosition } = Position;
 
 
@@ -16,6 +16,7 @@ export default {
     login,
     post,
     vote,
-    createCluster: Cluster,
-    createPosition
+    createCluster,
+    createPosition,
+    addMember
 }

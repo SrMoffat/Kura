@@ -31,12 +31,13 @@ module.exports =
 
         createPosition(
             positionName: String!
+            cluster: ID!
         ) : Position!
 
         addMember(
             clusterId: ID!
             memberId: ID!
-        ) : ClusterMember!
+        ) : Cluster!
 
         post(
             url: String!
@@ -58,7 +59,6 @@ module.exports =
         user_id: String!
         name: String!
         email: String!
-        password: String
         links: [Link!]!
         clusters: [Cluster!]!
     }
@@ -101,18 +101,14 @@ module.exports =
         clusterName: String!
         clusterHead: User!
         positions: [Position!]!
+        members: [User!]!
     }
 
     type Position {
         id: ID!
         positionName: String!
-        open: Boolean!
-        nominees: [User!]!
-    }
-
-    type ClusterMember {
-        id: ID!
         cluster: Cluster!
-        member: User!
+        open: Boolean!
+        nominees: [User!]
     }
     `
