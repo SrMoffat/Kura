@@ -6,6 +6,15 @@ const nominees = (parent, args, context, info) => {
     }).nominees();
 }
 
+const cluster = (parent, args, context, info) => {
+    const { id } = parent;
+
+    return context.prisma.position({
+        id
+    }).cluster();
+}
+
 export default {
-    nominees
+    nominees,
+    cluster
 }

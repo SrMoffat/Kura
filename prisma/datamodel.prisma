@@ -30,7 +30,7 @@ type Vote {
 
 type Position {
     id: ID! @id
-    positionName: String!
+    positionName: String! @unique
     cluster: Cluster!
     open: Boolean! @default(value: true)
     nominees: [User!]

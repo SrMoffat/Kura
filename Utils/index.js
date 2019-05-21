@@ -1,13 +1,14 @@
 import auth from './auth';
 import payload from './userPayloadValidator';
-import throwIfNotFound from './notFound';
+import notFound from './notFound';
 import checkClusterHead from './notHead';
 import checkClusterMembers from './memberExists';
 
 const  { userPayload, checkUserPayload }= payload;
 const { APP_SECRET, getUserId, AuthError } = auth;
 const { checkIfClusterHead, checkAlreadyHead } = checkClusterHead;
-const { checkMemberExists, checkMemberInCluster } = checkClusterMembers;
+const { checkMemberExists, checkMemberInCluster, findMember } = checkClusterMembers;
+const { throwIfNotFound, throwIfNotExisting } = notFound;
 
 export default {
     APP_SECRET,
@@ -16,8 +17,10 @@ export default {
     userPayload,
     checkUserPayload,
     throwIfNotFound,
+    throwIfNotExisting,
     checkIfClusterHead,
     checkMemberExists,
     checkMemberInCluster,
-    checkAlreadyHead
+    checkAlreadyHead,
+    findMember
 }

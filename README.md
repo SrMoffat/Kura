@@ -51,15 +51,20 @@ This is a simple platform where users can signup, login, nominate a user, vote f
     - [ ] Add query for the Cluster type
     - [X] Provided the clusterName create a cluster
     - [X] Assign the user creating the cluster as clusterHead
-    - [] Add a new clusterHead to a cluster (there should only be one)
-    - [] Add provisions for cluster positions
-    - [ ] Add members to a cluster
-    
-- [ ] Add Cluster Positions
-    - [ ] Add positions to the cluster
+    - [X] Add a new clusterHead to a cluster (there should only be one)
+    - [X] Add members to a cluster
+    - [] Remove a member from the cluster
 
+### Stretch Features
+- [ ] 
+- [ ]
+- [ ]
 
 ## 3. Positions
-- [ ]
-4. Nominations
-5. Votes
+- [ ] Add Cluster Positions
+    - [ ] Given the name and associated cluster create a positions
+    - [ ] Given a position and a user, create a nomination
+    - [ ] Mark a position as closed (open: false)
+
+## 4. Nominations
+## 5. Votes

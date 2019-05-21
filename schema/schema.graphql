@@ -31,7 +31,7 @@ module.exports =
 
         createPosition(
             positionName: String!
-            cluster: ID!
+            clusterName: String!
         ) : Position!
 
         addMember(
@@ -43,6 +43,11 @@ module.exports =
             clusterId: ID!
             headId: ID!
         ) : Cluster!
+
+        addNominee(
+            positionName: String!
+            nomineeEmail: String!
+        ) : Position
 
         post(
             url: String!

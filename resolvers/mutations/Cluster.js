@@ -21,8 +21,6 @@ const createCluster = async (parent, args, context, info) => {
     });
 }
 
-
-
 const addMember = async (parent, args, context, info) => {
 
     const { clusterId, memberId } = args; 

@@ -28,5 +28,6 @@ const checkMemberInCluster = async (context, clusterId, memberId) => {
 
 export default {
     checkMemberExists,
-    checkMemberInCluster
+    checkMemberInCluster,
+    findMember
 }

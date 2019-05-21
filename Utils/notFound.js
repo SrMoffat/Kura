@@ -8,4 +8,21 @@ const throwIfNotFound = async (context, model, id) =>  {
     return result;
 }
 
-export default throwIfNotFound;
+const throwIfNotExisting = async (context, model, column, value) =>  {
+    const stringColumn = `${column}_contains`;
+
+    const result = await context.prisma.$exists[model]({
+        [stringColumn] : value
+    });
+    if (!result){
+        throw new Error(`${column} provided does not exist!`);
+    }
+
+    return result;
+}
+
+
+export default {
+    throwIfNotFound,
+    throwIfNotExisting
+}
