@@ -39,6 +39,11 @@ module.exports =
             memberId: ID!
         ) : Cluster!
 
+        addHead(
+            clusterId: ID!
+            headId: ID!
+        ) : Cluster!
+
         post(
             url: String!
             description: String!

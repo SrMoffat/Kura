@@ -1,6 +1,9 @@
 import utils from '../../Utils';
 
-const { getUserId, throwIfNotFound, checkIfClusterHead, checkMemberExists } = utils;
+const { 
+    getUserId, throwIfNotFound, checkIfClusterHead,
+    checkMemberExists, checkMemberInCluster, checkAlreadyHead
+} = utils;
 
 const createCluster = async (parent, args, context, info) => {
 
@@ -41,7 +44,30 @@ const addMember = async (parent, args, context, info) => {
     });
 }
 
+const addHead = async (parent, args, context, info) => {
+    const { clusterId, headId } = args;
+
+    await throwIfNotFound(context, 'cluster', clusterId);
+    await throwIfNotFound(context, 'user', headId);
+    await checkIfClusterHead(context, clusterId);
+    await checkMemberInCluster(context, clusterId, headId);
+    await checkAlreadyHead(context, clusterId, headId);
+
+    return context.prisma.updateCluster({
+        where: {
+            id: clusterId
+        },
+        data: {
+            clusterHead: {
+                connect: { id: headId }
+            }
+        }
+    });
+
+}
+
 export default {
     createCluster,
-    addMember
+    addMember,
+    addHead
 }
