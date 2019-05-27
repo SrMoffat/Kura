@@ -7,7 +7,18 @@ const { userPayload, checkUserPayload } = utils;
 
 const signUp = async (parent, args, context, info) => {
 
-    await checkUserPayload(userPayload, args);
+    const error = await checkUserPayload(userPayload, args);
+
+    if(error){
+        const { path, message } = error;
+
+        return {
+            error: {
+                field: path,
+                message
+            }
+        }
+    }
 
     const { password, email } = args;
 
@@ -21,7 +32,12 @@ const signUp = async (parent, args, context, info) => {
     });
 
     if(userExists){
-        throw new Error('User Exists!');
+        return {
+            error: {
+                field: 'email',
+                message: 'User Exists!'
+            }
+        }
     }
 
     const user = await context.prisma.createUser({
@@ -37,8 +53,10 @@ const signUp = async (parent, args, context, info) => {
     );
 
     return {
-        token,
-        user
+        payload: {
+            token,
+            user
+        }
     }
 }
 
@@ -50,13 +68,23 @@ const login = async (parent, args, context, info) => {
     });
 
     if(!user){
-        throw new Error('User Not Found!');
+        return {
+            error: {
+                field: 'email',
+                message: 'User Not Found!'
+            }
+        }
     }
 
     const validPassword = await bcrypt.compare(password, user.password);
 
     if(!validPassword){
-        throw new Error('Invalid credentials!');
+        return {
+            error: {
+                field: 'password',
+                message: 'Invalid credentials!'
+            }
+        }
     }
 
     const token = jwt.sign({
@@ -66,8 +94,10 @@ const login = async (parent, args, context, info) => {
     );
 
     return {
-        token,
-        user
+        payload: {
+            token,
+            user
+        }
     }
 
 }

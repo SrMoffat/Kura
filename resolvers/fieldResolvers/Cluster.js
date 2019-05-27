@@ -13,7 +13,16 @@ const positions = (parent, args, context, info) => {
     }).positions();
 }
 
+const members = (parent, args, context, info) => {
+    const { id } = parent;
+
+    return context.prisma.cluster({
+        id
+    }).members();
+}
+
 export default {
     clusterHead,
-    positions
+    positions,
+    members
 }

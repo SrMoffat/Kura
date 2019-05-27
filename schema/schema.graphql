@@ -18,31 +18,31 @@ module.exports =
             name: String!
             email: String!
             password: String!
-        ) : AuthPayload
+        ) : AuthResponse!
 
         login(
             email: String!
             password: String!
-        ) : AuthPayload
+        ) : AuthResponse!
 
         createCluster(
             clusterName: String!
         ) : Cluster!
 
-        createPosition(
-            positionName: String!
-            clusterName: String!
-        ) : Position!
-
         addMember(
-            clusterId: ID!
-            memberId: ID!
+            clusterName: String!
+            memberEmail: String!
         ) : Cluster!
 
         addHead(
             clusterId: ID!
             headId: ID!
         ) : Cluster!
+
+        createPosition(
+            positionName: String!
+            clusterName: String!
+        ) : Position!
 
         addNominee(
             positionName: String!
@@ -73,9 +73,19 @@ module.exports =
         clusters: [Cluster!]!
     }
 
+    type Error {
+        field: String!
+        message: String! 
+    }
+
     type AuthPayload {
         token: String
         user: User
+    }
+
+    type AuthResponse {
+        payload: AuthPayload
+        error: Error
     }
 
     type Link {

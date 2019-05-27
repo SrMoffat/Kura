@@ -23,20 +23,20 @@ const createCluster = async (parent, args, context, info) => {
 
 const addMember = async (parent, args, context, info) => {
 
-    const { clusterId, memberId } = args; 
+    const { clusterName, memberEmail: email } = args; 
 
-    await throwIfNotFound(context, 'cluster', clusterId);
-    await throwIfNotFound(context, 'user', memberId);
-    await checkIfClusterHead(context, clusterId);
-    await checkMemberExists(context, clusterId, memberId);
+    await throwIfNotFound(context, 'cluster', 'clusterName', clusterName);
+    await throwIfNotFound(context, 'user', 'email', email);
+    await checkIfClusterHead(context, clusterName);
+    await checkMemberExists(context, clusterName, email);
 
     return context.prisma.updateCluster({
         where: {
-            id: clusterId
+            clusterName
         },
         data: {
             members: {
-                connect : { id: memberId }
+                connect : { email }
             }
         }
     });

@@ -6,8 +6,18 @@ const findMember = async (context, clusterId, memberId) => {
     return member;
 }
 
-const checkMemberExists = async (context, clusterId, memberId) => {
-    const memberExists = await findMember(context, clusterId, memberId);    
+const findMemberByEmail = async (context, clusterName, memberEmail) => {
+    const member = (await context.prisma.cluster({
+        clusterName
+    }).members()).find(member => member.email === memberEmail);
+
+    return member;
+}
+
+// TODO: Abstract the two functions to one 👆
+
+const checkMemberExists = async (context, clusterName, memberEmail) => {
+    const memberExists = await findMemberByEmail(context, clusterName, memberEmail);    
 
     if (memberExists) {
         throw new Error(
@@ -29,5 +39,6 @@ const checkMemberInCluster = async (context, clusterId, memberId) => {
 export default {
     checkMemberExists,
     checkMemberInCluster,
-    findMember
+    findMember,
+    findMemberByEmail
 }

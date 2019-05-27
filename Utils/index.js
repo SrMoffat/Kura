@@ -7,7 +7,7 @@ import checkClusterMembers from './memberExists';
 const  { userPayload, checkUserPayload }= payload;
 const { APP_SECRET, getUserId, AuthError } = auth;
 const { checkIfClusterHead, checkAlreadyHead } = checkClusterHead;
-const { checkMemberExists, checkMemberInCluster, findMember } = checkClusterMembers;
+const { checkMemberExists, checkMemberInCluster, findMember, findMemberByEmail } = checkClusterMembers;
 const { throwIfNotFound, throwIfNotExisting } = notFound;
 
 export default {
@@ -22,5 +22,6 @@ export default {
     checkMemberExists,
     checkMemberInCluster,
     checkAlreadyHead,
-    findMember
+    findMember,
+    findMemberByEmail
 }

@@ -10,8 +10,12 @@ const getClusterHead = async (context, clusterId) => {
     return clusterHead;
 }
 
-const checkIfClusterHead = async (context, clusterId) => {
+const checkIfClusterHead = async (context, clusterName) => {
     const currentUser = getUserId(context);
+
+    const clusterId = (await context.prisma.cluster({
+        clusterName
+    })).id
 
     const clusterHead = await getClusterHead(context, clusterId);
 
