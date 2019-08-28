@@ -54,6 +54,7 @@ const signUp = async (parent, args, context, info) => {
 
     return {
         payload: {
+            message: 'Successfully registered!',
             token,
             user
         }
@@ -95,6 +96,7 @@ const login = async (parent, args, context, info) => {
 
     return {
         payload: {
+            message: 'Successfully logged in!',
             token,
             user
         }
